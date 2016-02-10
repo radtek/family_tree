@@ -18,11 +18,11 @@ namespace FamilyTree
 
             Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
 
-            Business.TestInsertion.Test();
+            var person = new DB.Models.Person() { name ="1", fathersSurname="2", mothersSurname = "3", dateOfBirth = DateTime.Now, dateOfDeath = DateTime.Now.AddDays(1), isFemale = true, placeOfBirth = "4", placeOfDeath = "5", info = "6"};
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new GUI.PersonUI(person));
 
         }
 
