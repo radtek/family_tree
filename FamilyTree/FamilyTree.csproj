@@ -74,15 +74,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\TestInsertion.cs" />
-    <Compile Include="DB\Database.cs" />
-    <Compile Include="DB\Models\Helpers\ParentalInfo.cs" />
+    <Compile Include="Business\MockupInsertions.cs" />
+    <Compile Include="DB\Database.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DB\Models\Base\BaseMarriage.cs" />
+    <Compile Include="DB\Models\Base\BaseMarriageSon.cs" />
+    <Compile Include="DB\Models\Base\BasePerson.cs" />
     <Compile Include="DB\Models\Marriage.cs" />
     <Compile Include="DB\Models\MarriageSon.cs" />
     <Compile Include="DB\Models\Person.cs" />
     <Compile Include="DB\Repositories\MarriageRepository.cs" />
     <Compile Include="DB\Repositories\MarriageSonRepository.cs" />
     <Compile Include="DB\Repositories\PersonRepository.cs" />
+    <Compile Include="GUI\MarriageUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MarriageUI.Designer.cs">
+      <DependentUpon>MarriageUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PersonUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\MarriageUI.resx">
+      <DependentUpon>MarriageUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\PersonUI.resx">
       <DependentUpon>PersonUI.cs</DependentUpon>
     </EmbeddedResource>

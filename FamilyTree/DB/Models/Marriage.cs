@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace FamilyTree.DB.Models
 {
-
-    [NPoco.TableName("marriages")]
-    [NPoco.PrimaryKey("id")]
-    public class Marriage
+    public class Marriage : Base.BaseMarriage
     {
-        public int id { get; set; }
-        public int husband_id { get; set; }
-        public int wife_id { get; set; }
-        public DateTime date { get; set; }
+        [NPoco.Ignore]
+        public Person Husband { get; set; }
+        [NPoco.Ignore]
+        public Person Wife { get; set; }
+        [NPoco.Ignore]
+        public List<Person> Sons { get; set; }
     }
-
 }

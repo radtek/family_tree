@@ -16,5 +16,22 @@ namespace FamilyTree
         {
             InitializeComponent();
         }
+
+        private void lnkAddNewPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new GUI.PersonUI();
+            form.Show();
+        }
+
+        private void lnkAddNewMarriage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new GUI.MarriageUI();
+            form.Show();
+        }
+
+        private void lnkInsertMockupPersons_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Business.MockupInsertions.InsertMockupPersons();
+        }
     }
 }

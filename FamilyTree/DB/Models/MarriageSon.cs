@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace FamilyTree.DB.Models
 {
-    [NPoco.TableName("marriage_sons")]
-    public class MarriageSon
-    {        
-        public int marriage_id { get; set; }
-        public int son_id { get; set; }
+    public class MarriageSon : Base.BaseMarriageSon
+    {
     }
 }
