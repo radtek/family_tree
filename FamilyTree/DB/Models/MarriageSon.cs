@@ -8,5 +8,23 @@ namespace FamilyTree.DB.Models
 {
     public class MarriageSon : Base.BaseMarriageSon
     {
+
+        [NPoco.Ignore]
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        [NPoco.Ignore]
+        public Person Son { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", this.Son.ToString());
+        }
+
     }
 }

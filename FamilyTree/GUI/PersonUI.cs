@@ -31,7 +31,7 @@ namespace FamilyTree.GUI
             {
                 this.MarriageSon = new MarriageSonRepository().FindBySon(this.Person);
                 this.PersonMarriage = new MarriageRepository().FindByPerson(this.Person);
-                this.ParentsMarriage = new MarriageRepository().FindParentsMarriage(this.Person);
+                this.ParentsMarriage = new MarriageRepository().FindByMarriageSon(this.Person);
             }
             
             SetPersonDataBindings();
@@ -74,17 +74,6 @@ namespace FamilyTree.GUI
                     false,
                     DataSourceUpdateMode.OnPropertyChanged);
 
-            this.dtpDateOfBirth.DataBindings.Add("Value",
-                    this.Person,
-                    nameof(this.Person.dateOfBirth),
-                    false,
-                    DataSourceUpdateMode.OnPropertyChanged);
-            this.dtpDateOfDeath.DataBindings.Add("Value",
-                    this.Person,
-                    nameof(this.Person.dateOfDeath),
-                    false,
-                    DataSourceUpdateMode.OnPropertyChanged);
-
             this.rtbInfo.DataBindings.Add("Text",
                     this.Person,
                     nameof(this.Person.info),
@@ -97,8 +86,26 @@ namespace FamilyTree.GUI
         {
             var list = new PersonRepository().FindAll();
             var form = new SelectorUI<Person>(list);
-            form.Show();
+            form.ShowDialog();
             var selectedItem = form.SelectedItem;
+            if (selectedItem != null)
+            {
+                this.PersonMarriage = new Marriage(this.Person, selectedItem);
+                txtPartner.Text = selectedItem.ToString();
+            }                
+        }
+
+        private void btnSelectParents_Click(object sender, EventArgs e)
+        {
+            var list = new MarriageRepository().FindAll();
+            var form = new SelectorUI<Marriage>(list);
+            form.ShowDialog();
+            var selectedItem = form.SelectedItem;
+            if (selectedItem != null)
+            {
+                this.ParentsMarriage = selectedItem;
+                txtParents.Text = selectedItem.ToString();
+            }                
         }
 
         private void chkUnknownDateOfBirth_CheckedChanged(object sender, EventArgs e)
@@ -116,11 +123,37 @@ namespace FamilyTree.GUI
             this.dtpDateOfMarriage.Enabled = this.chkUnknownDateOfMarriage.Checked;
         }
 
-        private void btnSaveToDb_Click(object sender, EventArgs e)
+        private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
-
+            if (this.chkUnknownDateOfBirth.Checked)
+                this.Person.dateOfBirth = this.dtpDateOfBirth.Value;
         }
 
+        private void dtpDateOfDeath_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.chkUnknownDateOfDeath.Checked)
+                this.Person.dateOfDeath = this.dtpDateOfDeath.Value;
+        }
+
+        private void btnSaveToDb_Click(object sender, EventArgs e)
+        {
+            var db = DB.Database.GetDatabase();
+
+            // Person:
+            if (this.Person.id == 0)
+                this.Person = (Person)db.Insert(this.Person);
+            else
+                db.Update(this.Person);
+
+            // Person's marriage:
+            if(this.PersonMarriage?.id == 0)
+                this.PersonMarriage = (Marriage)db.Insert(this.PersonMarriage);
+
+            // Link to parent's marriage:
+            if (this.MarriageSon?.id == 0)
+                this.MarriageSon = (MarriageSon)db.Insert(this.MarriageSon);
+
+        }
 
     }
 }

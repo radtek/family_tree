@@ -17,7 +17,17 @@ namespace FamilyTree.DB.Repositories
 
         public MarriageSon FindBySon(Person person)
         {
-            return DB.Database.GetDatabase().FetchBy<MarriageSon>(sql => sql.Where(x => x.son_id.Equals(person.id))).FirstOrDefault();
+            var marriageSon = DB.Database.GetDatabase().FetchBy<MarriageSon>(sql => sql.Where(x => x.son_id.Equals(person.id))).FirstOrDefault();
+            if(marriageSon != null)
+            {
+                marriageSon.Son = person;
+                return marriageSon;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
     }

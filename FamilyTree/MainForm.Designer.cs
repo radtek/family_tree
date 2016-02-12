@@ -31,6 +31,7 @@
             this.lnkAddNewPerson = new System.Windows.Forms.LinkLabel();
             this.lnkAddNewMarriage = new System.Windows.Forms.LinkLabel();
             this.lnkInsertMockupPersons = new System.Windows.Forms.LinkLabel();
+            this.lnkSelectAndEditPerson = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lnkAddNewPerson
@@ -66,11 +67,23 @@
             this.lnkInsertMockupPersons.Text = "Insert mockup persons";
             this.lnkInsertMockupPersons.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkInsertMockupPersons_LinkClicked);
             // 
+            // lnkSelectAndEditPerson
+            // 
+            this.lnkSelectAndEditPerson.AutoSize = true;
+            this.lnkSelectAndEditPerson.Location = new System.Drawing.Point(47, 208);
+            this.lnkSelectAndEditPerson.Name = "lnkSelectAndEditPerson";
+            this.lnkSelectAndEditPerson.Size = new System.Drawing.Size(150, 17);
+            this.lnkSelectAndEditPerson.TabIndex = 3;
+            this.lnkSelectAndEditPerson.TabStop = true;
+            this.lnkSelectAndEditPerson.Text = "Select and edit person";
+            this.lnkSelectAndEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectAndEditPerson_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 230);
+            this.ClientSize = new System.Drawing.Size(521, 327);
+            this.Controls.Add(this.lnkSelectAndEditPerson);
             this.Controls.Add(this.lnkInsertMockupPersons);
             this.Controls.Add(this.lnkAddNewMarriage);
             this.Controls.Add(this.lnkAddNewPerson);
@@ -87,6 +100,7 @@
         private System.Windows.Forms.LinkLabel lnkAddNewPerson;
         private System.Windows.Forms.LinkLabel lnkAddNewMarriage;
         private System.Windows.Forms.LinkLabel lnkInsertMockupPersons;
+        private System.Windows.Forms.LinkLabel lnkSelectAndEditPerson;
     }
 }
 

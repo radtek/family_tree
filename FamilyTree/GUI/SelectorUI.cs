@@ -33,6 +33,7 @@ namespace FamilyTree.GUI
                 foreach (DataGridViewRow selectedRow in selectedRows)
                 {
                     this.SelectedItem = (ModelType)selectedRow.DataBoundItem;
+                    this.Close();
                     return;
                 }                    
             }

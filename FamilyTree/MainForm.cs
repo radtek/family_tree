@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FamilyTree.DB.Models;
+using FamilyTree.DB.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +34,20 @@ namespace FamilyTree
         private void lnkInsertMockupPersons_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Business.MockupInsertions.InsertMockupPersons();
+            MessageBox.Show("Done.");
+        }
+
+        private void lnkSelectAndEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // first select the person:
+            var persons = new PersonRepository().FindAll();
+            var form = new GUI.SelectorUI<Person>(persons);
+            form.ShowDialog();
+            var selectedPerson = form.SelectedItem;
+
+            // then edit this person:
+            var personUI = new GUI.PersonUI(selectedPerson);
+            personUI.Show();
         }
     }
 }
