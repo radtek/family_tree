@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\CsvImporter.cs" />
     <Compile Include="Business\MockupInsertions.cs" />
     <Compile Include="DB\Database.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

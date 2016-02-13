@@ -10,7 +10,7 @@ namespace FamilyTree.DB.Models.Base
     [NPoco.PrimaryKey("id", AutoIncrement = true)]
     public class BasePerson
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public string name { get; set; }
         public string fathersSurname { get; set; }
         public string mothersSurname { get; set; }

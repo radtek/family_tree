@@ -16,9 +16,10 @@ namespace FamilyTree.GUI
     {
 
         private Person Person { get; set; }
-        private MarriageSon MarriageSon  { get; set; }
         private Marriage PersonMarriage { get; set; }
         private Marriage ParentsMarriage { get; set; }
+
+        private MarriageSon MarriageSon { get; set; }
 
         public PersonUI(Person person = null)
         {
@@ -29,13 +30,34 @@ namespace FamilyTree.GUI
             this.Person = person;
             if(this.Person != null)
             {
-                this.MarriageSon = new MarriageSonRepository().FindBySon(this.Person);
                 this.PersonMarriage = new MarriageRepository().FindByPerson(this.Person);
-                this.ParentsMarriage = new MarriageRepository().FindByMarriageSon(this.Person);
+                this.ParentsMarriage = new MarriageRepository().FindBySon(this.Person);
+                UpdateRelationshipsView();
+
+                this.MarriageSon = new MarriageSonRepository().FindBySon(this.Person);
             }
             
             SetPersonDataBindings();
 
+        }
+
+        private void UpdateRelationshipsView()
+        {
+
+            if (this.PersonMarriage != null)
+            {
+                if(this.Person.id == this.PersonMarriage.husband_id)
+                    this.txtPartner.Text = this.PersonMarriage?.Wife.ToString();
+                else
+                    this.txtPartner.Text = this.PersonMarriage?.Husband.ToString();
+
+                if(this.PersonMarriage.date != null)
+                    this.dtpDateOfMarriage.Value = (DateTime) this.PersonMarriage.date;
+                this.txtPlaceOfMarriage.Text = this.PersonMarriage.place;
+            }
+
+            if (this.ParentsMarriage != null)
+                this.txtParents.Text = this.ParentsMarriage.ToString();
         }
 
         private void SetPersonDataBindings()
@@ -89,23 +111,19 @@ namespace FamilyTree.GUI
             form.ShowDialog();
             var selectedItem = form.SelectedItem;
             if (selectedItem != null)
-            {
                 this.PersonMarriage = new Marriage(this.Person, selectedItem);
-                txtPartner.Text = selectedItem.ToString();
-            }                
+            UpdateRelationshipsView();
         }
 
         private void btnSelectParents_Click(object sender, EventArgs e)
         {
-            var list = new MarriageRepository().FindAll();
+            var list = new MarriageRepository().FindAll(fetchExtensions: true);
             var form = new SelectorUI<Marriage>(list);
             form.ShowDialog();
             var selectedItem = form.SelectedItem;
             if (selectedItem != null)
-            {
                 this.ParentsMarriage = selectedItem;
-                txtParents.Text = selectedItem.ToString();
-            }                
+            UpdateRelationshipsView();
         }
 
         private void chkUnknownDateOfBirth_CheckedChanged(object sender, EventArgs e)
@@ -135,25 +153,45 @@ namespace FamilyTree.GUI
                 this.Person.dateOfDeath = this.dtpDateOfDeath.Value;
         }
 
-        private void btnSaveToDb_Click(object sender, EventArgs e)
+        private void toolStripLabel1_Click(object sender, EventArgs e)
         {
             var db = DB.Database.GetDatabase();
 
             // Person:
             if (this.Person.id == 0)
-                this.Person = (Person)db.Insert(this.Person);
+                this.Person.id = (long)db.Insert(this.Person);
             else
                 db.Update(this.Person);
 
             // Person's marriage:
-            if(this.PersonMarriage?.id == 0)
-                this.PersonMarriage = (Marriage)db.Insert(this.PersonMarriage);
+            if (this.PersonMarriage != null)
+            {
+                if (!chkUnknownDateOfMarriage.Checked)
+                    this.PersonMarriage.date = dtpDateOfMarriage.Value;
+                this.PersonMarriage.place = txtPlaceOfMarriage.Text;
+
+                if (this.PersonMarriage?.id == 0)
+                    this.PersonMarriage.id = (long)db.Insert(this.PersonMarriage);
+                else
+                    db.Update(this.PersonMarriage);
+            }
 
             // Link to parent's marriage:
-            if (this.MarriageSon?.id == 0)
-                this.MarriageSon = (MarriageSon)db.Insert(this.MarriageSon);
-
+            if (this.ParentsMarriage != null)
+            {
+                var marriageSon = new MarriageSon()
+                {
+                    marriage_id = this.ParentsMarriage.id,
+                    son_id = this.Person.id
+                };
+                if (this.MarriageSon == null)
+                    marriageSon.id = (long)db.Insert(marriageSon);
+                else
+                {
+                    marriageSon.id = this.MarriageSon.id;
+                    db.Update(marriageSon);
+                }
+            }
         }
-
     }
 }

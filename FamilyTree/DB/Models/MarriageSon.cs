@@ -23,7 +23,10 @@ namespace FamilyTree.DB.Models
 
         public override string ToString()
         {
-            return string.Format("{0}", this.Son.ToString());
+            if (this.Son != null)
+                return string.Format("{0}", this.Son.ToString());
+            else
+                return "(null)";
         }
 
     }

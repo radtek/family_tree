@@ -9,9 +9,20 @@ namespace FamilyTree.DB.Repositories
 {
     class MarriageRepository
     {
-        public List<Marriage> FindAll()
+        public List<Marriage> FindAll(bool fetchExtensions = false)
         {
-            return DB.Database.GetDatabase().Fetch<Marriage>();
+            var db = DB.Database.GetDatabase();
+            var marriages = db.Fetch<Marriage>();
+            if(fetchExtensions)
+            {
+                var persons = db.Fetch<Person>().ToList();
+                foreach (var marriage in marriages)
+                {
+                    marriage.Husband = persons.Where(x => x.id.Equals(marriage.husband_id)).FirstOrDefault();
+                    marriage.Wife = persons.Where(x => x.id.Equals(marriage.wife_id)).FirstOrDefault();
+                }
+            }
+            return marriages;
         }
 
         public Marriage FindByPerson(Person person)
@@ -23,7 +34,7 @@ namespace FamilyTree.DB.Repositories
                 return null;
         }
 
-        public Marriage FindByMarriageSon(Person son)
+        public Marriage FindBySon(Person son)
         {
             var marriageSon = new MarriageSonRepository().FindBySon(son);
             if (marriageSon != null)
@@ -45,7 +56,7 @@ namespace FamilyTree.DB.Repositories
             var father = DB.Database.GetDatabase().FetchBy<Person>(sql => sql.Where(x => x.id.Equals(marriage.husband_id))).FirstOrDefault();
             var mother = DB.Database.GetDatabase().FetchBy<Person>(sql => sql.Where(x => x.id.Equals(marriage.wife_id))).FirstOrDefault();
             var sonIds = (DB.Database.GetDatabase().FetchBy<MarriageSon>(sql => sql.Where(x => x.marriage_id.Equals(marriage.id)))).Select(x => x.son_id).ToList();
-            var sons = DB.Database.GetDatabase().FetchBy<Person>(sql => sql.Where(x => sonIds.Contains((int) x.id))).ToList();
+            var sons = DB.Database.GetDatabase().FetchBy<Person>(sql => sql.Where(x => sonIds.Contains((long) x.id))).ToList();
 
             marriage.Husband = father;
             marriage.Wife = mother;

@@ -11,10 +11,11 @@ namespace FamilyTree.DB.Models.Base
     [NPoco.PrimaryKey("id", AutoIncrement = true)]
     public class BaseMarriage
     {
-        public int id { get; set; }
-        public int husband_id { get; set; }
-        public int wife_id { get; set; }
+        public long id { get; set; }
+        public long husband_id { get; set; }
+        public long wife_id { get; set; }
         public DateTime? date { get; set; }
+        public string place { get; set; }
     }
 
 }

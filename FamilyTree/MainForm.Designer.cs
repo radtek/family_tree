@@ -32,6 +32,7 @@
             this.lnkAddNewMarriage = new System.Windows.Forms.LinkLabel();
             this.lnkInsertMockupPersons = new System.Windows.Forms.LinkLabel();
             this.lnkSelectAndEditPerson = new System.Windows.Forms.LinkLabel();
+            this.lnkInsertFromCsv = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lnkAddNewPerson
@@ -78,18 +79,30 @@
             this.lnkSelectAndEditPerson.Text = "Select and edit person";
             this.lnkSelectAndEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectAndEditPerson_LinkClicked);
             // 
+            // lnkInsertFromCsv
+            // 
+            this.lnkInsertFromCsv.AutoSize = true;
+            this.lnkInsertFromCsv.Location = new System.Drawing.Point(46, 262);
+            this.lnkInsertFromCsv.Name = "lnkInsertFromCsv";
+            this.lnkInsertFromCsv.Size = new System.Drawing.Size(100, 17);
+            this.lnkInsertFromCsv.TabIndex = 4;
+            this.lnkInsertFromCsv.TabStop = true;
+            this.lnkInsertFromCsv.Text = "Insert from csv";
+            this.lnkInsertFromCsv.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkInsertFromCsv_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 327);
+            this.Controls.Add(this.lnkInsertFromCsv);
             this.Controls.Add(this.lnkSelectAndEditPerson);
             this.Controls.Add(this.lnkInsertMockupPersons);
             this.Controls.Add(this.lnkAddNewMarriage);
             this.Controls.Add(this.lnkAddNewPerson);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "FamilyTree Editor";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,6 +114,7 @@
         private System.Windows.Forms.LinkLabel lnkAddNewMarriage;
         private System.Windows.Forms.LinkLabel lnkInsertMockupPersons;
         private System.Windows.Forms.LinkLabel lnkSelectAndEditPerson;
+        private System.Windows.Forms.LinkLabel lnkInsertFromCsv;
     }
 }
 

@@ -15,9 +15,7 @@ namespace FamilyTree.Business
 
             var db = Database.GetDatabase();
 
-            var personModel = new Person();
-            db.Execute("DELETE FROM persons");
-            db.Execute("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='persons'");
+            Database.ClearTables(db);
 
             var persons = new List<Person>()
             {
@@ -26,8 +24,10 @@ namespace FamilyTree.Business
                 new Person { name = "son1" },
                 new Person { name = "sonsPartner" }
             };
+
             db.InsertBulk<Person>(persons);
 
         }
+
     }
 }

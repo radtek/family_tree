@@ -49,5 +49,18 @@ namespace FamilyTree
             var personUI = new GUI.PersonUI(selectedPerson);
             personUI.Show();
         }
+
+        private void lnkInsertFromCsv_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var csvImporter = new Business.CsvImporter();
+            var csvFilePath = @".\Data\data.csv";
+
+            // !!! Clear tables
+            var db = DB.Database.GetDatabase();
+            DB.Database.ClearTables(db);
+
+            csvImporter.Import(csvFilePath);
+        }
+
     }
 }

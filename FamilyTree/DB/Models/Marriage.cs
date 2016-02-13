@@ -43,13 +43,16 @@ namespace FamilyTree.DB.Models
                 this.Wife = person2;
             }
 
-            this.husband_id = (int) this.Husband.id;
-            this.wife_id = (int) this.Wife.id;
+            this.husband_id = (long) this.Husband.id;
+            this.wife_id = (long) this.Wife.id;
         }
 
         public override string ToString()
         {
-            return string.Format("{0} + {1}", this.Husband.ToString(), this.Wife.ToString()); 
+            if (this.Husband != null && this.Wife != null)
+                return string.Format("{0} + {1}", this.Husband.ToString(), this.Wife.ToString());
+            else
+                return "(null)";
         }
     }
 }
