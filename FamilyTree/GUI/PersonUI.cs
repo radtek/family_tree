@@ -28,7 +28,13 @@ namespace FamilyTree.GUI
 
             // custom:
             this.Person = person;
-            if(this.Person != null)
+            CustomitzedInitialization();
+
+        }
+
+        private void CustomitzedInitialization()
+        {
+            if (this.Person != null)
             {
                 this.PersonMarriage = new MarriageRepository().FindByPerson(this.Person);
                 this.ParentsMarriage = new MarriageRepository().FindBySon(this.Person);
@@ -36,9 +42,8 @@ namespace FamilyTree.GUI
 
                 this.MarriageSon = new MarriageSonRepository().FindBySon(this.Person);
             }
-            
-            SetPersonDataBindings();
 
+            SetPersonDataBindings();
         }
 
         private void UpdateRelationshipsView()
@@ -52,7 +57,12 @@ namespace FamilyTree.GUI
                     this.txtPartner.Text = this.PersonMarriage?.Husband.ToString();
 
                 if(this.PersonMarriage.date != null)
-                    this.dtpDateOfMarriage.Value = (DateTime) this.PersonMarriage.date;
+                {
+                    this.chkUnknownDateOfMarriage.Checked = false;
+                    this.dtpDateOfMarriage.Enabled = true;
+                    this.dtpDateOfMarriage.Value = (DateTime)this.PersonMarriage.date;
+                }
+  
                 this.txtPlaceOfMarriage.Text = this.PersonMarriage.place;
             }
 

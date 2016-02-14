@@ -39,14 +39,14 @@
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView.Name = "dataGridView1";
+            this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(466, 442);
+            this.dataGridView.Size = new System.Drawing.Size(1007, 861);
             this.dataGridView.TabIndex = 0;
             // 
             // toolStripContainer1
@@ -56,11 +56,11 @@
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.dataGridView);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(466, 442);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1007, 861);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(466, 467);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1007, 886);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -76,7 +76,7 @@
             this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(167, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(128, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripLabel1
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 467);
+            this.ClientSize = new System.Drawing.Size(1007, 886);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "SelectorUI";
             this.Text = "SelectorUI";

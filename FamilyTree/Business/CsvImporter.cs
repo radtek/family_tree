@@ -31,9 +31,17 @@ namespace FamilyTree.Business
         public void Import(string csvFilePath)
         {
             var lines = File.ReadAllLines(csvFilePath, Encoding.UTF7);
-            for(int lineIndex = 2; lineIndex < lines.Length; lineIndex += 2)
+            for(int lineIndex = 2; lineIndex < lines.Length-1; lineIndex += 2)
             {
-                ProcessMarriage(lines[lineIndex], lines[lineIndex + 1]);            
+                try
+                {
+                    ProcessMarriage(lines[lineIndex], lines[lineIndex + 1]);
+                }
+                catch (Exception ex)
+                {
+                    var _stop = -1;
+                }
+                
             }
         }
 
@@ -51,8 +59,8 @@ namespace FamilyTree.Business
             {
                 date = GetDate(cells[7]),
                 place = cells[9],
-                husband_id = husband.id,
-                wife_id = wife.id
+                husband_id = husband?.id,
+                wife_id = wife?.id
             };
             marriage.id = (long) _db.Insert(marriage);
             return marriage;
@@ -61,27 +69,43 @@ namespace FamilyTree.Business
         private Person GetPersonFromLine(string line)
         {
             var cells = line.Split(',');
-            var name = cells[2];
-            if (name != null)
+
+            var name = GetString( cells[2]);
+            if (name == null)
+                return null;
+
+            string numberOfSons = GetString(cells[10]);
+            if (numberOfSons == null)
+                numberOfSons = "(?)";
+
+            var person = new Person()
             {
-                var person = new Person()
-                {
-                    name = cells[2],
-                    fathersSurname = cells[3],
-                    mothersSurname = cells[4],
-                    dateOfBirth = GetDate(cells[5]),
-                    placeOfBirth = cells[6] == "" ? null : cells[6],
-                    dateOfDeath = GetDate(cells[11]),
-                    placeOfDeath = cells[13] == "" ? null : cells[13],
-                    info = cells[14],
-                    isFemale = int.Parse(cells[15]) == 1 ? true : false
-                };
-                person.id = (long)_db.Insert(person);
-                return person;
-            }
+                name = GetString(cells[2]),
+                fathersSurname = GetString(cells[3]),
+                mothersSurname = GetString(cells[4]),
+                dateOfBirth = GetDate(cells[5]),
+                placeOfBirth = GetString(cells[6]),
+                dateOfDeath = GetDate(cells[11]),
+                placeOfDeath = GetString(cells[13]),
+                info = string.Format("{0} fills. {1}.", numberOfSons, GetString(cells[14])),
+                isFemale = int.Parse(cells[15]) == 1 ? true : false
+            };
+            person.id = (long)_db.Insert(person);
+            return person;
+
+        }
+
+        private string GetString(string input)
+        {
+            if (input == null)
+                return null;
             else
             {
-                return null;
+                var output = input.Trim();
+                if (output == string.Empty)
+                    return null;
+                else
+                    return output;
             }
         }
 
