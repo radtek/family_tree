@@ -59,8 +59,8 @@ namespace FamilyTree
             var db = DB.Database.GetDatabase();
             DB.Database.ClearTables(db);
 
-            csvImporter.Import(@"C:\Users\xavier.pena\Desktop\family-tree-data\data1.csv");
-            csvImporter.Import(@"C:\Users\xavier.pena\Desktop\family-tree-data\data2.csv");
+            csvImporter.Import(@"E:\git-xavierpenya\data\data1.csv");
+            csvImporter.Import(@"E:\git-xavierpenya\data\data2.csv");
 
             MessageBox.Show("Done.");
 

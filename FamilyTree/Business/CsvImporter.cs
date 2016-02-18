@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FamilyTree.Business
@@ -21,7 +22,14 @@ namespace FamilyTree.Business
     class CsvImporter
     {
 
-        private NPoco.Database _db { get; set; }
+        private NPoco.Database _db;
+
+        /// <summary>
+        /// Tuple:
+        /// item1 = generation number
+        /// item2 = inner index
+        /// </summary>
+        private Dictionary<Person, Tuple<int, int>> _personsDict;
 
         public CsvImporter()
         {
@@ -43,6 +51,7 @@ namespace FamilyTree.Business
                 }
                 
             }
+
         }
 
         private void ProcessMarriage(string husbandLine, string wifeLine)
@@ -50,6 +59,24 @@ namespace FamilyTree.Business
             var husband = GetPersonFromLine(husbandLine);
             var wife = GetPersonFromLine(wifeLine);
             var marriage = GetMarriageFromHusbandLine(husbandLine, husband, wife);
+
+            if(husband != null)
+            {
+                var husbandIndexing = _personsDict[husband];
+                var sonId = (int) Math.Truncate((double)husbandIndexing.Item2 / 2);
+                var son = _personsDict.Where(x => x.Value.Item2.Equals(sonId)).Select(x => x.Key).FirstOrDefault();
+                if(son != null)
+                {
+                    var marriageSon = new MarriageSon()
+                    {
+                        marriage_id = marriage.id,
+                        son_id = son.id
+                    };
+                    var id = _db.Insert(marriageSon);
+                    marriageSon.id = (long) id;
+                }
+            }
+
         }
 
         private Marriage GetMarriageFromHusbandLine(string line, Person husband, Person wife)
@@ -91,6 +118,14 @@ namespace FamilyTree.Business
                 isFemale = int.Parse(cells[15]) == 1 ? true : false
             };
             person.id = (long)_db.Insert(person);
+
+            // !!!
+            int generationNumber = int.Parse(cells[0]);
+            int customId = int.Parse(Regex.Match(cells[1], @"\d+").Value);
+            if (_personsDict == null)
+                _personsDict = new Dictionary< Person, Tuple < int, int>>();
+            _personsDict.Add( person, new Tuple<int, int>(generationNumber, customId));
+
             return person;
 
         }
