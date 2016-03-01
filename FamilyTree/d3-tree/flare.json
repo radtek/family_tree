@@ -1,0 +1,665 @@
+﻿var treeData = {
+"name": "Joana Mª Forteza Fuster"
+,"children": [
+	{
+	"name": ""
+	,"children": [
+		{
+		"name": "Pep Forteza Forteza"
+		,"children": [
+			{
+			"name": ""
+			,"children": [
+				{
+				"name": "Rafel Forteza Picó"
+				,"children": [
+					{
+					"name": ""
+					,"children": [
+						{
+						"name": "Pep Forteza Segura"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Gaspar Forteza "
+								,"children": [
+									{
+									"name": ""
+									,"children": [
+										{
+										"name": "GABRIEL PIÑA SEGURA"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "GABRIEL PIÑA POMAR"
+												,"children": [
+													{
+													"name": ""
+													,"children": [
+														{
+														"name": "MIQUEL PIÑA POMAR"
+														,"children": [
+															{
+															"name": ""
+															,"children": [
+																{
+																"name": "JOAN PIÑA VALLS"
+																,"children": [
+																	{
+																	"name": ""
+																	,"children": [
+																		{
+																		"name": "MIQUEL PIÑA "
+																		},																		{
+																		"name": "ESPERANÇA VALLS "
+																		}
+																	]
+																	}
+																]
+																},																{
+																"name": "ISABET POMAR "
+																}
+															]
+															}
+														]
+														},														{
+														"name": "FRANCISCA POMAR "
+														}
+													]
+													}
+												]
+												},												{
+												"name": "ELIONOR SEGURA FUSTER"
+												,"children": [
+													{
+													"name": ""
+													,"children": [
+														{
+														"name": "MIQUEL SEGURA "
+														},														{
+														"name": "JOANA MARIA FUSTER "
+														}
+													]
+													}
+												]
+												}
+											]
+											}
+										]
+										},										{
+										"name": "MARIA POMAR "
+										}
+									]
+									}
+								]
+								},								{
+								"name": "Catalina Segura "
+								,"children": [
+									{
+									"name": ""
+									,"children": [
+										{
+										"name": "GASPAR GORI FUSTER MIRÓ"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "PERE JOAN FUSTER AGUILÓ"
+												},												{
+												"name": "CATALINA MIRÓ RAYÓ"
+												}
+											]
+											}
+										]
+										},										{
+										"name": "ELISABET VALLS MIRÓ"
+										}
+									]
+									}
+								]
+								}
+							]
+							}
+						]
+						},						{
+						"name": "Francisca Picó Valls"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Bernat Francisco Pico "
+								},								{
+								"name": "Catalina Valls "
+								}
+							]
+							}
+						]
+						}
+					]
+					}
+				]
+				},				{
+				"name": "Joana Mª Forteza Miró"
+				,"children": [
+					{
+					"name": ""
+					,"children": [
+						{
+						"name": "Pep Forteza Forteza"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Bernat Forteza "
+								},								{
+								"name": "Catalina Forteza "
+								}
+							]
+							}
+						]
+						},						{
+						"name": "Joana Mª Miró Forteza"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Pere Joan Miró "
+								},								{
+								"name": "Joana Mª Forteza "
+								}
+							]
+							}
+						]
+						}
+					]
+					}
+				]
+				}
+			]
+			}
+		]
+		},		{
+		"name": "Isabel Fuster Fuster"
+		,"children": [
+			{
+			"name": ""
+			,"children": [
+				{
+				"name": "Gabriel Nicolau Fuster Piña"
+				,"children": [
+					{
+					"name": ""
+					,"children": [
+						{
+						"name": "Josep Fuster Valls"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Gaspar Gori Fuster Miro"
+								,"children": [
+									{
+									"name": ""
+									,"children": [
+										{
+										"name": "*Pere Joan Fuster Aguilo"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "*Jaume Josep Fuster Cortés"
+												},												{
+												"name": "*Fca.Jacinta Aguilo Marti"
+												}
+											]
+											}
+										]
+										},										{
+										"name": "*Catalina Miro Rayo"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "*Francesc Josep Miró Aguiló"
+												},												{
+												"name": "*Antonia Rayó Pedramunt"
+												}
+											]
+											}
+										]
+										}
+									]
+									}
+								]
+								},								{
+								"name": "Elisabet Valls Miro"
+								}
+							]
+							}
+						]
+						},						{
+						"name": "Maria Piña Pomar"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Gabriel Piña Segura"
+								},								{
+								"name": "Maria Pomar "
+								}
+							]
+							}
+						]
+						}
+					]
+					}
+				]
+				},				{
+				"name": "Antònia Aina Fuster Fuster"
+				,"children": [
+					{
+					"name": ""
+					,"children": [
+						{
+						"name": "Francesc Fuster Fuster"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Pere J. Fuster Piña"
+								,"children": [
+									{
+									"name": ""
+									,"children": [
+										{
+										"name": "Francesc Joaquim Fuster Miró"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "*Pere Joan Fuster Aguiló"
+												,"children": [
+													{
+													"name": ""
+													,"children": [
+														{
+														"name": "*Jaume Josep FUSTER CORTES"
+														,"children": [
+															{
+															"name": ""
+															,"children": [
+																{
+																"name": "TONI FUSTER TARONGI"
+																},																{
+																"name": "ELISABET CORTES FORTEZA"
+																}
+															]
+															}
+														]
+														},														{
+														"name": "*Fca.Jacinta AGUILO MARTI"
+														,"children": [
+															{
+															"name": ""
+															,"children": [
+																{
+																"name": "JOAN BTA. AGUILO AGUILO"
+																},																{
+																"name": "MARIANA MARTI "
+																}
+															]
+															}
+														]
+														}
+													]
+													}
+												]
+												},												{
+												"name": "*Catalina Miró Rayó"
+												,"children": [
+													{
+													"name": ""
+													,"children": [
+														{
+														"name": "FRANCESC JOS. MIRO AGUILO"
+														,"children": [
+															{
+															"name": ""
+															,"children": [
+																{
+																"name": "TONI MIRO PUJOL"
+																,"children": [
+																	{
+																	"name": ""
+																	,"children": [
+																		{
+																		"name": "FRANCESC MIRO "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "BARTOMEU MIRO "
+																				}
+																			]
+																			}
+																		]
+																		},																		{
+																		"name": "ANTONINA PUJOL "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "TONI PUJOL "
+																				}
+																			]
+																			}
+																		]
+																		}
+																	]
+																	}
+																]
+																},																{
+																"name": "MAGDALENA AGUILO AGUILO"
+																,"children": [
+																	{
+																	"name": ""
+																	,"children": [
+																		{
+																		"name": "TONI MATGI AGUILO "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "FRANCESC AGUILO "
+																				,"children": [
+																					{
+																					"name": ""
+																					,"children": [
+																						{
+																						"name": "FRANCESC AGUILO "
+																						},																						{
+																						"name": "PERE J. AGUILO "
+																						}
+																					]
+																					}
+																				]
+																				},																				{
+																				"name": "ELIONOR  "
+																				}
+																			]
+																			}
+																		]
+																		},																		{
+																		"name": "ELIONOR AGUILO AGUILO"
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "Bernat AGUILO "
+																				},																				{
+																				"name": "CATALINA AGUILO "
+																				}
+																			]
+																			}
+																		]
+																		}
+																	]
+																	}
+																]
+																}
+															]
+															}
+														]
+														},														{
+														"name": "ANTONIA RAYO PEDRAMUNT"
+														,"children": [
+															{
+															"name": ""
+															,"children": [
+																{
+																"name": "FRANCESC RAYO BONNIN"
+																,"children": [
+																	{
+																	"name": ""
+																	,"children": [
+																		{
+																		"name": "Rafel RAYO "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "FRANCESC RAYO "
+																				}
+																			]
+																			}
+																		]
+																		},																		{
+																		"name": "ANTONINA BONNIN "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "NICOLAU BONNIN "
+																				}
+																			]
+																			}
+																		]
+																		}
+																	]
+																	}
+																]
+																},																{
+																"name": "CATALINA PEDRAMUNT PIÑA"
+																,"children": [
+																	{
+																	"name": ""
+																	,"children": [
+																		{
+																		"name": "JERONI PEDRAMUNT "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "NICOLAU PEDRAMUNT "
+																				}
+																			]
+																			}
+																		]
+																		},																		{
+																		"name": "CATALINA PIÑA "
+																		,"children": [
+																			{
+																			"name": ""
+																			,"children": [
+																				{
+																				"name": "JOANOT PIÑA  "
+																				},																				{
+																				"name": "PERE NICOLAU MARTI "
+																				}
+																			]
+																			}
+																		]
+																		}
+																	]
+																	}
+																]
+																}
+															]
+															}
+														]
+														}
+													]
+													}
+												]
+												}
+											]
+											}
+										]
+										},										{
+										"name": "Francisca Aina Piña Segura"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "Miquel Piña "
+												},												{
+												"name": "Fca Aina Segura "
+												}
+											]
+											}
+										]
+										}
+									]
+									}
+								]
+								},								{
+								"name": "Antònia Fuster Piña"
+								,"children": [
+									{
+									"name": ""
+									,"children": [
+										{
+										"name": "Joan Fuster Forteza"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "Joan Josep Fuster Pomar"
+												,"children": [
+													{
+													"name": ""
+													,"children": [
+														{
+														"name": "*Jaume Josep FUSTER CORTES"
+														,"children": [
+															{
+															"name": ""
+															,"children": [
+																{
+																"name": "BENET POMAR MARTI"
+																,"children": [
+																	{
+																	"name": ""
+																	,"children": [
+																		{
+																		"name": "BENET POMAR "
+																		},																		{
+																		"name": "FRANCISCA MARTI "
+																		}
+																	]
+																	}
+																]
+																},																{
+																"name": "BENETA CORTES SUREDA"
+																}
+															]
+															}
+														]
+														},														{
+														"name": "*Elisabet POMAR CORTES"
+														}
+													]
+													}
+												]
+												},												{
+												"name": "Margalida Forteza Miró"
+												}
+											]
+											}
+										]
+										},										{
+										"name": "Catalina Aina Piña Aguiló"
+										}
+									]
+									}
+								]
+								}
+							]
+							}
+						]
+						},						{
+						"name": "Francisca Aina Fuster Valleriola"
+						,"children": [
+							{
+							"name": ""
+							,"children": [
+								{
+								"name": "Antoni (a) Bo Fuster Fuster"
+								,"children": [
+									{
+									"name": ""
+									,"children": [
+										{
+										"name": "Nicoau Fuster Bonnin"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "Toni Fuster "
+												},												{
+												"name": "Margalida Bonnin "
+												}
+											]
+											}
+										]
+										},										{
+										"name": "Francina Fuster Picó"
+										,"children": [
+											{
+											"name": ""
+											,"children": [
+												{
+												"name": "Rafel Fuster "
+												},												{
+												"name": "Magdalena Picó "
+												}
+											]
+											}
+										]
+										}
+									]
+									}
+								]
+								},								{
+								"name": "Rosa Valleriola "
+								}
+							]
+							}
+						]
+						}
+					]
+					}
+				]
+				}
+			]
+			}
+		]
+		}
+	]
+	}
+]
+};

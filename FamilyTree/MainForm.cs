@@ -59,12 +59,31 @@ namespace FamilyTree
             var db = DB.Database.GetDatabase();
             DB.Database.ClearTables(db);
 
-            csvImporter.Import(@"E:\git-xavierpenya\data\data1.csv");
-            csvImporter.Import(@"E:\git-xavierpenya\data\data2.csv");
+            csvImporter.Import(@"C:\Users\xavier.pena\Documents\e-dric\Projects\git-xavierpenya\data\data1.csv");
+            csvImporter.Import(@"C:\Users\xavier.pena\Documents\e-dric\Projects\git-xavierpenya\data\data2.csv");
 
             MessageBox.Show("Done.");
 
         }
 
+        private void lnkConvertToJson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //var jsonExporter = new Business.D3ForceDirectedExporter();
+            //var jsonText = jsonExporter.GetAllItemsAsJson();
+            //System.IO.File.WriteAllText(@".\d3-force-directed\graph.js", "var jsonVar = " + jsonText + ";", Encoding.UTF8);
+            //MessageBox.Show("Done.");
+
+            var jsonExporter = new Business.D3DendogramExporter();
+            var jsonText = jsonExporter.GetAllItemsAsJson();
+            System.IO.File.WriteAllText(@".\d3-dendogram\flare.json", "var root = " + jsonText + ";", Encoding.UTF8);
+            MessageBox.Show("Done.");
+        
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var frm = new ForceDirected.Demo();
+            frm.ShowDialog();
+        }
     }
 }

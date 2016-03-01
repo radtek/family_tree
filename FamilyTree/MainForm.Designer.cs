@@ -33,6 +33,8 @@
             this.lnkInsertMockupPersons = new System.Windows.Forms.LinkLabel();
             this.lnkSelectAndEditPerson = new System.Windows.Forms.LinkLabel();
             this.lnkInsertFromCsv = new System.Windows.Forms.LinkLabel();
+            this.lnkConvertToJson = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lnkAddNewPerson
@@ -90,17 +92,41 @@
             this.lnkInsertFromCsv.Text = "Insert from csv";
             this.lnkInsertFromCsv.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkInsertFromCsv_LinkClicked);
             // 
+            // lnkConvertToJson
+            // 
+            this.lnkConvertToJson.AutoSize = true;
+            this.lnkConvertToJson.Location = new System.Drawing.Point(47, 314);
+            this.lnkConvertToJson.Name = "lnkConvertToJson";
+            this.lnkConvertToJson.Size = new System.Drawing.Size(103, 17);
+            this.lnkConvertToJson.TabIndex = 5;
+            this.lnkConvertToJson.TabStop = true;
+            this.lnkConvertToJson.Text = "Convert to json";
+            this.lnkConvertToJson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkConvertToJson_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(337, 155);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(72, 17);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 327);
+            this.ClientSize = new System.Drawing.Size(521, 412);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.lnkConvertToJson);
             this.Controls.Add(this.lnkInsertFromCsv);
             this.Controls.Add(this.lnkSelectAndEditPerson);
             this.Controls.Add(this.lnkInsertMockupPersons);
             this.Controls.Add(this.lnkAddNewMarriage);
             this.Controls.Add(this.lnkAddNewPerson);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "FamilyTree Editor";
             this.ResumeLayout(false);
@@ -115,6 +141,8 @@
         private System.Windows.Forms.LinkLabel lnkInsertMockupPersons;
         private System.Windows.Forms.LinkLabel lnkSelectAndEditPerson;
         private System.Windows.Forms.LinkLabel lnkInsertFromCsv;
+        private System.Windows.Forms.LinkLabel lnkConvertToJson;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

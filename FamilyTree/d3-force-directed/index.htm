@@ -1,0 +1,216 @@
+
+<!-- saved from url=(0019)http://graus.nu/d3/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>D3 DiGraph Test</title>
+
+	<script type="text/javascript" src="./d3.js"></script>
+    <script type="text/javascript" src="./d3.geom.js"></script>
+    <script type="text/javascript" src="./d3.layout.js"></script>	
+	<script src="./graph.js" type="text/javascript"></script>
+    <style type="text/css">
+	
+	:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{display:none !important;}
+	
+	body { 
+		padding-top:20px;
+		background: #AAA;
+		font-family:helvetica,arial;
+		text-shadow:#000 0px 1px 1px;
+		}
+	node { 
+		stroke-width: 1.5px;
+		}
+	.graph {
+		width:960px;
+		margin:0 auto;
+		color:#FFF;
+		border: 1px dashed #333;
+		fill: #000;
+		}		
+	line {
+		stroke: #666;
+		}
+	.text {
+		text-align:justify;	
+		height:140px;
+		margin: 0 auto;
+		color:#FFF;
+		font-size:14px;
+		line-height:20px;
+		}
+		
+	.text a {
+		color:orange;
+		text-decoration:none;
+		}
+		
+    </style>
+  </head>
+  
+  <body>
+	
+	<div class="text">
+	<p>About: <a href="http://graus.nu/thesis/force-directed-graphs-playing-around-with-d3-js/" target="_blank">Force-Directed Graphs: Playing around with D3.js [graus.nu]</a></p>
+	</div>
+	
+	<div class="graph">
+	</div>
+
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/simpleicon" title="SimpleIcon">SimpleIcon</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>    
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+    // size of the diagram
+	var w = 960,
+    h = 700,
+	r = 10;
+
+	var vis = d3.select(".graph")
+		.append("svg:svg")
+		.attr("width", w)
+		.attr("height", h)
+		.attr("pointer-events", "all")
+		.append('svg:g')
+		.call(d3.behavior.zoom().on("zoom", redraw))
+		.append('svg:g');
+
+	vis.append('svg:rect')
+		.attr('width', w)
+		.attr('height', h)
+		.attr('fill', 'rgba(1,1,1,0)')
+
+	function redraw() {
+		//console.log("here", d3.event.translate, d3.event.scale);
+		vis.attr("transform","translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
+	}
+
+	var force = d3.layout.force()
+		.gravity(.05)
+		.charge(-800)
+		.linkDistance( 20 )
+		.size([w, h]);
+
+	var svg = d3.select(".text").append("svg")
+		.attr("width", w)
+		.attr("height", h);
+
+	// ===
+	// CUSTOM CODE:
+
+	var linkOpacity = 0.2;
+
+	// build the arrow for the link
+	svg.append("svg:defs").selectAll("marker")
+		.data(["arrow"])      // Different link/path types can be defined here
+		.enter().append("svg:marker")    // This section adds in the arrows
+		.attr("id", String)
+		.attr("viewBox", "0 -5 10 10")
+		.attr("refX", -10)
+		.attr("refY", 0)
+		.attr("markerWidth", 3)
+		.attr("markerHeight", 3)
+		.attr("orient", "auto")
+		.append("svg:path")
+		.attr("d", "M0,-5L10,0L0,5")
+		.style("opacity", linkOpacity);
+
+	load(jsonVar);
+
+	var globalNode = null;
+	var globalLink = null;
+
+	// ===
+
+	function load(json) {
+
+		var link = vis.selectAll("line")
+			.data(json.links)
+			.enter().append("line")
+			.attr("stroke-opacity", linkOpacity)
+			.attr("stroke-width","6")
+			.style("stroke", "black")
+			.on("mouseover", function(){d3.select(this).attr("stroke-opacity", "0.5");})
+			.on("mouseout", function(){d3.select(this).attr("stroke-opacity", linkOpacity) })
+			.attr("marker-start", "url(#arrow)");
+
+			link.append("title")
+				.text(function(d) { return d.label } );
+
+		var node = vis.selectAll("g.node")
+			.data(json.nodes)
+			.enter().append("svg:g")
+			.attr("class", "node")
+			.call(force.drag);
+
+		globalNode = node;
+		globalLink = link;
+
+		function getSize(d, factor) {
+			var size = 20;
+			return factor * size + "px";
+		}
+
+		icons =
+			{"male": "male",
+			"female": "female",
+			"marriage": "marriage"};
+
+		function getIcon(d){
+			if(icons[d.type]){
+				return "./icons/" + icons[d.type] + ".svg";
+			}else{
+				return "./icons/" + "unknown.svg";
+			}
+		}
+
+		node.append("svg:image")
+			.attr("class", "circle")
+			.attr("xlink:href", function(d) { return getIcon(d); })
+			.attr("x", function(d) { return getSize(d, -0.5); } )
+			.attr("y", function(d) { return getSize(d, -0.5); } )
+			.attr("width", function(d) { return getSize(d, 1); } )
+			.attr("height", function(d) { return getSize(d, 1); } )
+			.style("fill", function (d) { return d.color; })
+			.style("stroke", function (d) { return d.color; } )
+			.style("stroke-width", 4)
+			.style("opacity", 1);
+
+		var size = 20;
+
+		node.append("svg:text")
+			.attr("text-anchor", "middle")
+			.attr("y", function(d) { return getSize(d, -0.6); })
+			.attr("fill","#000")
+			.style("pointer-events", "none")
+			.attr("font-size", function(d) { if (d.color == '#b94431') { return 10+(size*2) + 'px'; } else { return "9px"; } } )
+			.attr("font-weight", function(d) { if (d.color == '#b94431') { return "bold"; } else { return "100"; } } )
+			.text( function(d) { if (d.color == '#b94431') { return d.id + ' (' + size + ')';} else { return d.id;} } ) ;
+
+		node.append("title")
+			.text(function(d) { return d.URI } );
+
+		force
+			.nodes(json.nodes)
+			.links(json.links)
+			.on("tick", tick)
+			.start();
+
+		function tick() {
+			node.attr("cx", function(d) { return d.x; })
+				.attr("cy", function(d) { return d.y; })
+				.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")";});
+
+			link.attr("x1", function(d) { return d.source.x; })
+				.attr("y1", function(d) { return d.source.y; })
+				.attr("x2", function(d) { return d.target.x; })
+				.attr("y2", function(d) { return d.target.y; });
+
+		}
+	}
+
+</script>

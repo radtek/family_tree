@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\CsvImporter.cs" />
+    <Compile Include="Business\D3DendogramExporter.cs" />
+    <Compile Include="Business\D3ForceDirectedExporter.cs" />
     <Compile Include="Business\MockupInsertions.cs" />
     <Compile Include="DB\Database.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -88,11 +90,26 @@
     <Compile Include="DB\Repositories\MarriageRepository.cs" />
     <Compile Include="DB\Repositories\MarriageSonRepository.cs" />
     <Compile Include="DB\Repositories\PersonRepository.cs" />
+    <Compile Include="GUI\force-directed-graph\Diagram.cs" />
+    <Compile Include="GUI\force-directed-graph\Example\Demo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\force-directed-graph\Example\Demo.designer.cs">
+      <DependentUpon>Demo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\force-directed-graph\Node.cs" />
+    <Compile Include="GUI\force-directed-graph\Vector.cs" />
     <Compile Include="GUI\MarriageUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\MarriageUI.Designer.cs">
       <DependentUpon>MarriageUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\D3NodeVisualizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\D3NodeVisualizer.Designer.cs">
+      <DependentUpon>D3NodeVisualizer.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\PersonUI.cs">
       <SubType>Form</SubType>
@@ -114,8 +131,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\force-directed-graph\Example\Demo.resx">
+      <DependentUpon>Demo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MarriageUI.resx">
       <DependentUpon>MarriageUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\D3NodeVisualizer.resx">
+      <DependentUpon>D3NodeVisualizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PersonUI.resx">
       <DependentUpon>PersonUI.cs</DependentUpon>
@@ -135,6 +158,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="d3-dendogram\flare.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="d3-tree\flare.json" />
     <None Include="DB\family_tree.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -153,6 +180,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="d3-dendogram\d3.v3.min.js" />
+    <Content Include="d3-dendogram\index.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\d3.geom.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\d3.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\d3.layout.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\icons\female.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\icons\male.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\icons\marriage.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-force-directed\index.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="d3-tree\dndTree.js" />
+    <Content Include="d3-tree\index.htm" />
+    <Content Include="GUI\force-directed-graph\README.txt" />
+    <Content Include="NOTES.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
